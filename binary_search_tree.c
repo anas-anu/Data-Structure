@@ -13,15 +13,18 @@ void createNew();
 void inorder(struct node *);
 void preorder(struct node *);
 void postorder(struct node *);
+void search(struct node *,int);
+int getinordersuccessor(struct node *);
+struct node *delete(struct node *,int);
 
 int main()
 {
     struct node *root=NULL;
-    int ch,item,n,i;
+    int ch,item,n,i,key,value;
 
     do
     {
-        printf ("\n1.Create BST\n2.Inorder Traversal\n3.Preorder Traversal\n4.Postorder Traversal\n5.Insert\n6.Exit\nEnter A Choice:\n");
+        printf ("\n1.Create BST\n2.Inorder Traversal\n3.Preorder Traversal\n4.Postorder Traversal\n5.Insert\n6.Search\n7.Delete\n8.Exit\nEnter A Choice:\n");
         scanf("%d",&ch);
         switch (ch)
         {
@@ -50,13 +53,23 @@ int main()
             insert(root);
             break;
         case 6:
+            printf("Enter the Element To Search:\n");
+            scanf("%d",&key);
+            search(root,key);
+            break;
+        case 7:
+            printf("Enter the Element To Delete:\n");
+            scanf("%d",&value);
+            delete(root,value);
+            break;
+        case 8:
             exit(0);
         default:
             printf("Please Enter a Valid Choice \n");
             break;
         }
     }  
-    while(ch!=6);
+    while(ch!=8);
 }   
 struct node *create(struct node *root,int item)
 {
@@ -171,5 +184,80 @@ void insert(struct node *root)
         }
     }
 }
+
+void search(struct node *root,int key)
+{
+    if(root==NULL)
+    {
+        printf("Value Does not Exist");
+    }
+    else if(key==root->data)
+    {
+        printf("Value Found");
+    }
+    else if (key<root->data)
+    {
+        search(root->left,key);
+    }
+    else
+    {
+        search(root->right,key);
+    }
+}
+
+int getinordersuccessor(struct node *root)
+{
+    struct node *temp;
+    temp=root;
+    while(temp->left!=NULL)
+
+    {
+        temp=temp->left;
+    }
+    return temp->data;
+}
+
+struct node *delete(struct node *root,int value)
+{
+    struct node *temp;
+    int inorderSuccessor;
+    if(root==NULL)
+    {
+        printf("Empty Tree\n");
+    }
+    else if(root->data>value)
+    {
+        delete(root->left,value);
+    }
+    else if(root->data<value)
+    {
+        delete(root->right,value);
+    }
+    else
+    {
+        if(root->left==NULL && root->right==NULL)
+        {
+            free(root);
+            return NULL;
+        }
+        else if(root->left==NULL)
+        {
+            temp=root->right;
+            return temp;
+        }
+        else if(root->right==NULL)
+        {
+            temp=root->left;
+            return temp;
+        }
+        else 
+        {
+            inorderSuccessor=getinordersuccessor(root->right);
+            root->data=inorderSuccessor;
+            root->right=delete(root->right,inorderSuccessor);
+        }
+    }
+}
+
 
 
