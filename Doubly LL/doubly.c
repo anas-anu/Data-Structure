@@ -258,11 +258,6 @@ struct node
 				{
 					printf("\nItem Found At Location:\n%d",i+1);
 				}
-				else
-				{
-					i++;
-					ptr=ptr->next;
-				}
 				i++;
 				ptr=ptr->next;
 			}
