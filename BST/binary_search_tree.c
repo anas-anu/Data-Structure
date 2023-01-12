@@ -6,7 +6,7 @@ struct node
     struct node *left;
     struct node *right;
 };
-struct node *root,*ptr;
+struct node *root,*ptr,*parent;
 struct node *create(struct node *,int);
 void insert();
 void createNew();
@@ -204,60 +204,88 @@ void search(struct node *root,int key)
         search(root->right,key);
     }
 }
-
-int getinordersuccessor(struct node *root)
+void delete(struct node *root)
 {
-    struct node *temp;
-    temp=root;
-    while(temp->left!=NULL)
-
-    {
-        temp=temp->left;
-    }
-    return temp->data;
+	if(root==NULL)
+	{
+		printf("Empty Tree\n");
+		return;
+	}
+	else
+	{
+		parent=NULL;
+		ptr=root;
+	}
+	while(ptr!=NULL)
+	{
+		if(ptr->data==value)
+		{
+			break;
+		}
+		parent=ptr;
+		else if(value>ptr->data)
+		{
+			ptr=ptr->right;
+		}
+		else
+		{
+			ptr=ptr->left;
+		}
+	}
+	if(ptr==NULL)
+	{
+		printf("Item Not Present");
+	}
+	else
+	{
+		if(ptr->right==NULL && ptr->left==NULL)
+		{
+			if(parent==NULL)
+			{
+				root=NULL;
+			}
+			else if(parent->right==ptr)
+			{
+				parent->right=NULL;
+			}
+			else
+			{
+				parent->left=NULL;
+			}
+			printf("Element Deleted\n");
+			free(ptr);
+		}
+		else if(ptr->right!=NULL && ptr->left!=NULL)
+		{
+			p=ptr->right;
+			while(p->left!=NULL)
+			{
+				p=p->left;
+			}
+			dat=p->data;
+			delete(p->data);
+			ptr->data=dat;
+		}
+		else
+		{
+			if(parent==NULL)
+			{
+				if(ptr->right==NULL)
+				{
+					root=ptr->left;
+				}
+				else
+				{
+					root=ptr->right;
+				}
+			}	
+			else
+			{
+				if(parent->right==NULL);
+				if(ptr->right==NULL);
+			}
+		}
+	}
 }
-
-struct node *delete(struct node *root,int value)
-{
-    struct node *temp;
-    int inorderSuccessor;
-    if(root==NULL)
-    {
-        printf("Empty Tree\n");
-    }
-    else if(root->data>value)
-    {
-        delete(root->left,value);
-    }
-    else if(root->data<value)
-    {
-        delete(root->right,value);
-    }
-    else
-    {
-        if(root->left==NULL && root->right==NULL)
-        {
-            free(root);
-            return NULL;
-        }
-        else if(root->left==NULL)
-        {
-            temp=root->right;
-            return temp;
-        }
-        else if(root->right==NULL)
-        {
-            temp=root->left;
-            return temp;
-        }
-        else 
-        {
-            inorderSuccessor=getinordersuccessor(root->right);
-            root->data=inorderSuccessor;
-            root->right=delete(root->right,inorderSuccessor);
-        }
-    }
-}
-
 
 
