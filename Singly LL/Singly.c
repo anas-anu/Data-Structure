@@ -74,7 +74,7 @@
 	    new=(struct node *)malloc(sizeof(struct node));
 	    if(new==NULL)
 	    {
-	        printf("OVERFLOW");
+	        printf("\nInsuffitient Memory\n");
 	    }
 	    else
 	    {
@@ -100,7 +100,7 @@
 	    new=(struct node *)malloc(sizeof(struct node));
 	    if(new==NULL)
 	    {
-	        printf("OVERFLOW");
+	        printf("\nInsuffitient Memory\n");
 	    }
 	    else
 	    {
@@ -130,7 +130,7 @@
 	    new=(struct node *)malloc(sizeof(struct node));
 	    if(new==NULL)
 	    {
-	        printf("OVERFLOW");
+	        printf("\nInsuffitient Memory\n");
 	    }
 	    else
 	    {
@@ -158,7 +158,7 @@
 	{
 	    if(head==NULL)
 	    {
-	        printf("\nUNCERFLOW\n");
+	        printf("\nUNDERFLOW\n");
 	    }
 	    else if(head->next==NULL)
 	    {
