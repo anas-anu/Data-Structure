@@ -21,7 +21,7 @@
 	    int op,ele,key,val,ne;
 	    do
 	    {
-	        printf("\n1.Insert Beginning\n2.Insert Last\n3.Insert Between\n4.Delete Beginning\n5.Delete Last\n6.Delete Between\n7.Search\n8.Display\n9.Exit\nChoose An Option:\n");
+	        printf("\n1.Insert Beginning\n2.Insert Last\n3.Insert Between\n4.Delete Beginning\n5.Delete Last\n6.Delete Specified\n7.Search\n8.Display\n9.Exit\nChoose An Option:\n");
 	        scanf("%d",&op);
 	        switch(op)
 	        {
@@ -195,7 +195,6 @@
 	}
 	void delBet(int key)
 	{
-	    struct node *temp;
 	    if(head==NULL)
 	    {
 	        printf("\nUNDERFLOW\n");
