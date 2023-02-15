@@ -221,6 +221,7 @@
 	void search(int val)
 	{
 		struct node *ptr;
+		int flag=0;
 		ptr=head;
 	    if(head==NULL)
 		{
@@ -233,11 +234,13 @@
 				if(ptr->data==val)
 				{
 					printf("\nItem Found\n");
+					flag=1;
 				}	
-				else
-				{
-				}
 				ptr=ptr->next;
+			}
+			if(flag==0)
+			{
+				printf("\nItem Not Found\n");
 			}
 		}
 	}
