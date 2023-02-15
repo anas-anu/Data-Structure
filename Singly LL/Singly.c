@@ -205,6 +205,10 @@
 	        head=NULL;
 	        free(head);
 	    }
+		else if(head->data==key)
+		{
+			delBeg();
+		}
 	    else
 	    {
 	        ptr=head;
