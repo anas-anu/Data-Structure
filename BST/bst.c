@@ -1,71 +1,71 @@
 #include<stdio.h>
-	#include<stdlib.h>
-	struct node
-	{
-	    int data;
-	    struct node *left;
-	    struct node *right;
-	};
-	struct node *root,*ptr,*parent;
-	struct node *create(struct node *,int);
-	void insert();
-	void createNew();
-	void inorder(struct node *);
-	void preorder(struct node *);
-	void postorder(struct node *);
-	void search(struct node *,int);
-	struct node* deleteNode(struct node *root, int key);
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *left;
+    struct node *right;
+};
+struct node *root,*ptr,*parent;
+struct node *create(struct node *,int);
+void insert();
+void createNew();
+void inorder(struct node *);
+void preorder(struct node *);
+void postorder(struct node *);
+void search(struct node *,int);
+struct node* deleteNode(struct node *root, int key);
 	
-	int main()
-	{
-	    struct node *root=NULL;
-	    int ch,item,n,i,key;
+int main()
+{
+    struct node *root=NULL;
+    int ch,item,n,i,key;
 	
-	    do
-	    {
-	        printf ("\n1.Create BST\n2.Inorder Traversal\n3.Preorder Traversal\n4.Postorder Traversal\n5.Insert\n6.Search\n7.Delete\n8.Exit\nEnter A Choice:\n");
-	        scanf("%d",&ch);
-	        switch (ch)
-	        {
-	        case 1:
-	            root=NULL;
-	            printf("Enter the Number of Nodes:\n");
-	            scanf("%d",&n);
-	            for(i=1;i<=n;i++)
-	            {
-	                printf("Enter the data of node %d:\n",i);
-	                scanf("%d",&item);
-	                root=create(root,item);
-	            }
-	            printf("BST Created Successfully\n");
-	            break;
-	        case 2:
-	            inorder(root);
-	            break;
-	        case 3:
-	            preorder(root);
-	            break;
-	        case 4:
-	            postorder(root);
-	            break;
-	        case 5:
-	            insert(root);
-	            break;
-	        case 6:
-	            printf("Enter the Element To Search:\n");
-	            scanf("%d",&key);
-	            search(root,key);
-	            break;
-	        case 7:
-	            printf("Enter the Element To Delete:\n");
-	            scanf("%d",&key);
-	            deleteNode(root,key);
-	            break;
-	        case 8:
-	            exit(0);
+    do
+    {
+        printf ("\n1.Create BST\n2.Inorder Traversal\n3.Preorder Traversal\n4.Postorder Traversal\n5.Insert\n6.Search\n7.Delete\n8.Exit\nEnter A Choice:\n");
+        scanf("%d",&ch);
+        switch (ch)
+        {
+        case 1:
+            root=NULL;
+            printf("Enter the Number of Nodes:\n");
+            scanf("%d",&n);
+            for(i=1;i<=n;i++)
+            {
+                printf("Enter the data of node %d:\n",i);
+                scanf("%d",&item);
+                root=create(root,item);
+            }
+            printf("BST Created Successfully\n");
+            break;
+        case 2:
+            inorder(root);
+            break;
+        case 3:
+            preorder(root);
+            break;
+        case 4:
+            postorder(root);
+            break;
+        case 5:
+            insert(root);
+            break;
+        case 6:
+            printf("Enter the Element To Search:\n");
+            scanf("%d",&key);
+            search(root,key);
+            break;
+        case 7:
+            printf("Enter the Element To Delete:\n");
+            scanf("%d",&key);
+            deleteNode(root,key);
+            break;
+        case 8:
+            exit(0);
 	        default:
-	            printf("Please Enter a Valid Choice \n");
-	            break;
+            printf("Please Enter a Valid Choice \n");
+            break;
 	        }
 	    }  
 	    while(ch!=8);
