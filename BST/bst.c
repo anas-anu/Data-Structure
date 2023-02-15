@@ -14,7 +14,7 @@ void inorder(struct node *);
 void preorder(struct node *);
 void postorder(struct node *);
 void search(struct node *,int);
-struct node* deleteNode(struct node *root, int key);
+struct node *deleteNode(struct node *root, int key);
 	
 int main()
 {
@@ -63,10 +63,10 @@ int main()
             break;
         case 8:
             exit(0);
-	        default:
-            printf("Please Enter a Valid Choice \n");
-            break;
-	        }
+	    default:
+           printf("Please Enter a Valid Choice \n");
+           break;
+	       }
 	    }  
 	    while(ch!=8);
 	}   
@@ -203,10 +203,8 @@ int main()
 	        search(root->right,key);
 	    }
 	}
-	struct node* minValueNode(struct node* node){
-	struct node* current = node;
-
-
+	struct node *minValueNode(struct node *node){
+	struct node *current = node;
 	while (current && current->left != NULL)
 	current = current->left;
 
