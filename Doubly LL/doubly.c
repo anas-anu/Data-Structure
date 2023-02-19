@@ -53,7 +53,7 @@ struct node
 				case 9:
 				exit(0);
 				default:
-				printf("Please Enter a valid choice:");
+				printf("Please Enter a valid choice:\n");
 			}
 		}
 		while(choice!=10);
@@ -142,7 +142,6 @@ struct node
 			scanf("%d",&loc);
 			for(i=0;i<loc;i++)
 			{
-				ptr=ptr->next;
 				if(ptr==NULL)
 				{
 					printf("There Are less than %d elements",loc);
@@ -242,7 +241,7 @@ struct node
 	void search()
 	{
 		struct node *ptr;
-		int item,i=0;
+		int item,i=0,flag=0;
 		ptr=head;
 		if(ptr == NULL)
 		{
@@ -257,9 +256,18 @@ struct node
 				if(ptr->data==item)
 				{
 					printf("\nItem Found At Location:\n%d",i+1);
+					flag=1;
+				}
+				else
+				{
+					flag=0;
 				}
 				i++;
 				ptr=ptr->next;
+			}
+			if(flag==0)
+			{
+				printf("\nItem Not In List\n");
 			}
 		}
 	}
@@ -270,7 +278,7 @@ struct node
         printf("\nElements Are:\n");
 		while(ptr!=NULL)
 		{
-			printf("%d",ptr->data);
+			printf("%d\n",ptr->data);
 			ptr=ptr->next;
 		}
 	}
