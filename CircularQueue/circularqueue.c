@@ -3,13 +3,13 @@
 void insertion();
 void deletion();
 void display();
-int front=-1,rear=-1,item,size=3,a[10];
+int front=-1,rear=-1,item,size=9,a[10];
 void main()
 {
 int opt;
 do
 {
-printf("Enter your option:\n 1.insertion\n 2.deletion\n 3.display\n 4.exit\n");
+printf("\n 1.Insertion\n 2.Deletion\n 3.Display\n 4.Exit\nChoose a Operation:\n");
 scanf("%d",&opt);
 switch(opt)
 {
@@ -21,7 +21,7 @@ case 3:display();
 break;
 case 4:exit(0);
 break;
-default:printf("invalid entry\n");
+default:printf("\nPlease Choose a Valid Option\n");
 }
 }while(opt!=4);
 }
@@ -33,7 +33,7 @@ printf("Queue is full");
 }
 else
 {
-printf("Enter the item to be inserted:");
+printf("Enter the item to be Inserted:\n");
 scanf("%d",&item);
 if(front==-1 && rear==-1)
 {
@@ -56,12 +56,12 @@ printf("No elements");
 }
 else if(front==rear)
 {
-printf("The element to be deleted is %d",a[front]);
+printf("The Element to be Deleted is:%d",a[front]);
 front=rear=-1;
 }
 else
 {
-printf("The element to be deleted is %d",a[front]);
+printf("The Element to be Deleted is:\n%d",a[front]);
 front=(front+1)%size;
 }
 }
@@ -70,7 +70,7 @@ void display()
 int i;
 if((front==-1)&&(rear==-1))
 {
-printf("no elements");
+printf("No elements");
 }
 else
 { 
@@ -78,14 +78,14 @@ printf("Elements are :\n");
 if (front<rear)
 {
 for(i=front;i<=rear;i++)
-printf("%d",a[i]);
+printf("%d \n",a[i]);
 }
 else
 {
 for(i=front;i<size;i++)
-printf("%d",a[i]);
+printf("%d \n",a[i]);
 for(i=0;i<=rear;i++)
-printf("%d",a[i]);
+printf("%d \n",a[i]);
 }
 }
 }
